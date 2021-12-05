@@ -8,6 +8,7 @@ Frontend in HTML, using Bootstrap.
 
 ### Backend
 - [Install Python 3](https://www.python.org/downloads/)
+- Run the database bootstrap `python bootstrap.py`
 - Install requirements using pip `pip install -r requirements.txt`
 
 ### Frontend
