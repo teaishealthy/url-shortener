@@ -51,7 +51,7 @@
             
             const response = await fetch('short/' + url, { method: 'post' });
             const data = await response.json()
-            const aURL = `${window.location.protocol}//${window.location.host}/${data.url}`
+            const aURL = `${window.location.protocol}//${window.location.host}${data.url}`
             
             document.querySelector('#a-url').innerText = aURL;
             document.querySelector('#a-url').href = aURL;
