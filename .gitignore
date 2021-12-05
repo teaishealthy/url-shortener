@@ -1,5 +1,6 @@
 
 # Python files
 .venv
+.vscode
 __pycache__
 *.db
