@@ -24,7 +24,7 @@ def create_short(url: str):
     if not pattern.match(url):
         return {"error": "Invalid URL"}, 400
     with connection() as cursor:
-        cursor.execute(f"INSERT INTO shorts (link) VALUES (?)", (url,))
+        cursor.execute("INSERT INTO shorts (link) VALUES (?)", (url,))
         return {"url": f"/short/{cursor.lastrowid}"}
 
 
@@ -45,7 +45,7 @@ def index():
 
 def _get_short(short_id: int):
     with connection() as cursor:
-        cursor.execute(f"SELECT link FROM shorts WHERE id = ?", (short_id,))
+        cursor.execute("SELECT link FROM shorts WHERE id = ?", (short_id,))
         result = cursor.fetchone()
     if result is None:
         return {"error": "Short link not found"}, 404
@@ -55,7 +55,7 @@ def _get_short(short_id: int):
 @app.delete("/short/<path:short_id>")
 def delete_short(short_id: int):
     with connection() as cursor:
-        cursor.execute(f"DELETE FROM shorts WHERE id = ?", (short_id,))
+        cursor.execute("DELETE FROM shorts WHERE id = ?", (short_id,))
         # check if row was deleted
         if cursor.rowcount == 0:
             return {"error": "Short link not found"}, 404
